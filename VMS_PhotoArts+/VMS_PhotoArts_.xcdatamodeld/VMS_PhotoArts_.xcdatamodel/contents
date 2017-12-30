@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Cart" representedClassName="Cart" syncable="YES" codeGenerationType="class">
+        <attribute name="framed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="item" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="subtotal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PurchaseHistory" inverseName="toCart" inverseEntity="PurchaseHistory" syncable="YES"/>
+        <relationship name="toUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="toCart" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="PurchaseHistory" representedClassName="PurchaseHistory" syncable="YES" codeGenerationType="class">
+        <attribute name="datetime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="framed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="item" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="subtotal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toCart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cart" inverseName="toHistory" inverseEntity="Cart" syncable="YES"/>
+        <relationship name="toUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="toHistory" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="apartment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toCart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cart" inverseName="toUser" inverseEntity="Cart" syncable="YES"/>
+        <relationship name="toHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PurchaseHistory" inverseName="toUser" inverseEntity="PurchaseHistory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Cart" positionX="43" positionY="-198" width="128" height="148"/>
+        <element name="PurchaseHistory" positionX="-144" positionY="-378" width="128" height="163"/>
+        <element name="User" positionX="-315" positionY="-198" width="128" height="223"/>
+    </elements>
+</model>
